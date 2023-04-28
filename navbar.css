@@ -1,0 +1,43 @@
+hr{
+    border: none;
+    height: 3px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    background-color: black;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0 20px;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .nav-link {
+    font-size: 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .collapse{
+    display:flex;
+    justify-content:right;
+}
