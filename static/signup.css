@@ -1,9 +1,4 @@
-body {
-    background-color: #FFFFFF;
-    font-family: 'Gabriela';
-  }
-
-  .container {
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,24 +40,7 @@ body {
     width: 100%;
     font-size: 16px;
   }
-  button.signup {
-    background-color: #9ED77B;
-  }
-  .title-container {
-    margin-right: 50px;
-  }
-  h1 {
-    font-size: 60px;
-    text-align: left;
-    margin-bottom: 10px;
-  }
-  p {
-    font-size: 30px;
-    text-align: left;
-    margin-top: 0px;
-    margin-bottom: 40px;
-  }
 
-  hr{
-    background-color:black;
+  button.signup {
+    background-color: #72dd30;
   }

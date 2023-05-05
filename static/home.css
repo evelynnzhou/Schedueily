@@ -10,9 +10,11 @@ body{
     height: calc(100vh - 56px); /* 56px is the height of the navbar */
 
 }
+
 .title {
     font-size: 60pt;
 }
+
 .subtitle {
     font-size: 30pt;
 }

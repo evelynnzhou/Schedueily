@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Schedueily Login/Signup</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
     <link href='https://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet'>
   </head>
   <body>
@@ -12,10 +12,10 @@
         <p>Make easy changes to your school schedules</p>
       </div>
       <div class="form-container">
-        <form>
-          <input type="text" placeholder="Username" required>
+        <form method="POST">
+          <input type="text" placeholder="Username" required id="username" name="username">
           <br>
-          <input type="password" placeholder="Password" required>
+          <input type="password" placeholder="Password" required id="password" name="password"> 
           <br>
           <button type="submit">Log In</button>
           <hr>

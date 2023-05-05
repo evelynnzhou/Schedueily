@@ -14,16 +14,16 @@
     <!-- Your Personal CSS BELOW this Line -->
     <title>Schedueily</title>
     <link href='https://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="navbar.css">
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="../static/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../static/home.css">
 
 </head>
 
 <body>
     <!-- copied from https://getbootstrap.com/docs/4.3/components/navbar/ -->
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="navbar-left" class="nav-tem active">
-          <a href="#" class="navbar-brand">SCHEDUEILY</a>
+        <div class="navbar-left" class="nav-item">
+          <a href="/home" class="navbar-brand">SCHEDUEILY</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,33 +31,43 @@
         </button>
         <div class="navbar-right collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a href="add.html" class="nav-link">ADD</a>
+            <li class="nav-item active">
+              <a href="/add" class="nav-link">ADD</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">DROP</a>
+              <a href="/drop" class="nav-link">DROP</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">CHANGE</a>
+              <a href="/change" class="nav-link">CHANGE</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">VIEW</a>
+              <a href="view.html" class="nav-link">VIEW</a>
             </li>
           </ul>
         </div>
       </nav>
-          
     <hr>
 
-    <div class="flex">
-        <div class="title">
-            Schedueily
-        </div>
-        <div class="subtitle">
-            Make easy changes to your school schedules
-        </div>
-    </div>
-
+    <div class="container">
+      <div class="jumbotron text-center">
+        <h1>Classes Offered</h1>
+      </div>
+        {% for course in course_list %}
+          <div class="card">
+            <img
+              src=#
+              class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{course}}</h5>
+            </div>
+            <div class="card-body">
+              <form action="#" method = "POST">
+                <a class="btn btn-primary" href="#" class="card-link">Add Class</a>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+    </div>   
 
     <!-- Your Content ABOVE this Line -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
