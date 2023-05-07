@@ -33,6 +33,9 @@ teacher4 = Course(first_name = "Katharine", last_name = "Hanson")
 teacher5 = Course(first_name = "Philip", last_name = "Harris")
 teacher6 = Course(first_name = "Nandhini", last_name = "Namasivayam")
 
+db_session.add_all([teacher1, teacher2, teacher3, teacher4, teacher5, teacher6])
+db_session.commit()
+
 # Add new enrollments
 en1 = Enrollment(course_id = 1, student_id = 1)
 en2 = Enrollment(course_id = 2, student_id = 1)
@@ -42,4 +45,7 @@ en5 = Enrollment(course_id = 5, student_id = 2)
 en6 = Enrollment(course_id = 6, student_id = 2)
 en7 = Enrollment(course_id = 7, student_id = 2)
 en8 = Enrollment(course_id = 8, student_id = 2)
+
+db_session.add_all([en1, en2, en3, en4, en5, en6, en7, en8])
+db_session.commit()
 
