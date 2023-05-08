@@ -12,7 +12,7 @@ body {
 
   .form-container {
     width: 400px;
-    height: 270px;
+    height: 280px;
     background-color: #FFFFFF;
     border-radius: 20px;
     text-align: center;
@@ -54,19 +54,22 @@ body {
     margin-right: 50px;
   }
 
-  h1 {
+  h1{
     font-size: 60px;
     text-align: left;
     margin-bottom: 10px;
   }
   
-  p {
+  p{
     font-size: 30px;
     text-align: left;
     margin-top: 0px;
-    margin-bottom: 40px;
   }
 
   hr{
     background-color:black;
+  }
+
+  .error-text{
+    font-size: 18px;
   }

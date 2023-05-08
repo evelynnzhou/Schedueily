@@ -18,8 +18,14 @@
           <input type="password" placeholder="Password" required id="password" name="password"> 
           <br>
           <button type="submit">Log In</button>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for msg in messages %}
+                <p class = "error-text">{{msg}}</p>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
         </form>
-        <hr>
         <form action = "/signup">
           <button class="signup">Sign up</button>
         </form>

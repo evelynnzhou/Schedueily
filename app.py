@@ -27,7 +27,7 @@ def login():
         if(success == True):
             return redirect(url_for("home"))
         else:
-            flash("Incorrect username or password. Try again.")
+            flash("Incorrect username or password. Try again.", "error")
             return render_template("index.html")
 
 
@@ -46,6 +46,7 @@ def signup():
         student = Student(username = username, password = password)
         db_session.add(student)
         db_session.commit()
+        session["username"] = username
 
         return render_template("index.html")
 
@@ -56,20 +57,32 @@ def home() :
     else:
         return redirect(url_for("login"))
 
+def get_unenrolled():
+    student = db_session.query(Student).where(Student.username == session["username"]).first()
+    all_courses = db_session.query(Course).all()
+    course_list = []
+    for course in all_courses:
+        if(course not in student.courses):
+            course_list.append(course)
+    return course_list
+
 @app.route("/add", methods = ["GET", "POST"])
 def add():
     if (request.method == "GET"):
-        course_list = db_session.query(Course).all()
-        return render_template("add.html", course_list = course_list)
+        return render_template("add.html", course_list = get_unenrolled())
     elif (request.method == "POST"):
-        stu = db_session.query(Student).first()
-        new_en = Enrollment(course_id = 1, student_id = stu.username)
+        course_id = request.form["course"]
+        new_en = Enrollment(course_id = course_id, student_id = session["username"])
+        print(course_id)
         db_session.add(new_en)
-        db_session.commit()        
+        db_session.commit()
+    return render_template("add.html", course_list = get_unenrolled())        
 
 @app.route("/drop")
 def drop():
     return render_template("drop.html")
+
+    #remove enrollement OR remove course from list
 
 @app.route("/change")
 def change():

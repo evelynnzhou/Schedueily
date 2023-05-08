@@ -61,8 +61,9 @@
               <h5 class="card-title">{{course}}</h5>
             </div>
             <div class="card-body">
-              <form action="#" method = "POST">
-                <a class="btn btn-primary" href="#" class="card-link">Add Class</a>
+              <form action="/add" method = "POST">
+                <input type = "hidden" value = "{{course.id}}" name = "course">
+                <button class="btn btn-primary" href="#" class="card-link" type="submit">Add Class</button>
               </form>
             </div>
           </div>
