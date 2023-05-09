@@ -66,15 +66,25 @@ def get_unenrolled():
             course_list.append(course)
     return course_list
 
+def check_free(course_id):
+    student = db_session.query(Student).where(Student.username == session["username"]).first()
+    for course in student.courses:
+        if(course.block == db_session.query(Course).where(Course.id == course_id).first().block):
+            return False
+    return True
+
 @app.route("/add", methods = ["GET", "POST"])
 def add():
     if (request.method == "GET"):
         return render_template("add.html", course_list = get_unenrolled())
     elif (request.method == "POST"):
         course_id = request.form["course"]
-        new_en = Enrollment(course_id = course_id, student_id = session["username"])
-        db_session.add(new_en)
-        db_session.commit()
+        if(check_free(course_id) == False):
+            flash("You already have a class during this block.", "error")
+        else:
+            new_en = Enrollment(course_id = course_id, student_id = session["username"])
+            db_session.add(new_en)
+            db_session.commit()
     return render_template("add.html", course_list = get_unenrolled())        
 
 @app.route("/drop", methods = ["GET", "POST"])

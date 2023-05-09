@@ -2,6 +2,14 @@ body{
     font-family: 'Gabriela';
 }
 
+.card-deck {
+    margin-bottom: 20px;
+}
+
+.error-text{
+    font-size: 18px;
+}
+
 .flex {
     display: flex;
     flex-direction: column;

@@ -52,24 +52,33 @@
       <div class="jumbotron text-center">
         <h1>Classes Offered</h1>
       </div>
-      <div class = "card-deck">
-        {% for course in course_list %}
-          <div class="card">
-            <img
-              src=#
-              class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{course}}</h5>
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for msg in messages %}
+              <p class = "error-text">{{msg}}</p>
+            {% endfor %}
+          {% endif %}
+      {% endwith %}
+      {% for row in range((course_list|length/4)|round(method = "ceil")|int)%}
+        <div class = "card-deck">
+            {% for course in course_list[row*4: row*4 + 4]%}
+            <div class="card col-md-3 col-sm-10 col-xs-12">
+              <img
+                src=#
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{course}}</h5>
+              </div>
+              <div class="card-body">
+                <form action="/add" method = "POST">
+                  <input type = "hidden" value = "{{course.id}}" name = "course">
+                  <button class="btn btn-primary" href="#" class="card-link" type="submit">Add Class</button>
+                </form>
+              </div>
             </div>
-            <div class="card-body">
-              <form action="/add" method = "POST">
-                <input type = "hidden" value = "{{course.id}}" name = "course">
-                <button class="btn btn-primary" href="#" class="card-link" type="submit">Add Class</button>
-              </form>
-            </div>
-          </div>
+          {% endfor %}
+        </div>
         {% endfor %}
-      </div>
     </div>   
 
     <!-- Your Content ABOVE this Line -->
