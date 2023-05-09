@@ -16,6 +16,7 @@
     <link href='https://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="../static/navbar.css">
     <link rel="stylesheet" type="text/css" href="../static/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/drop.css">
 
 </head>
 
@@ -50,45 +51,28 @@
 
     <div class="container">
         <div class="jumbotron text-center">
-          <h1>Classes Offered</h1>
+          <h1>Your Classes</h1>
         </div>
-        <div class="card-deck">
-          <div class="card">
-            <img
-              src=#
-              class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Class Title</h5>
+        {% for row in range((course_list|length/4)|round(method = "ceil")|int)%}
+        <div class = "card-deck">
+            {% for course in course_list[row*4: row*4 + 4]%}
+            <div class="card col-md-3 col-sm-10 col-xs-12">
+              <img
+                src=#
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{course}}</h5>
+              </div>
+              <div class="card-body">
+                <form action="/drop" method = "POST">
+                  <input type = "hidden" value = "{{course.id}}" name = "course">
+                  <button class="btn btn-primary" href="#" class="card-link" type="submit">Drop Class</button>
+                </form>
+              </div>
             </div>
-            <div class="card-body">
-              <a class="btn btn-primary" href="https://dexteritytennis.com/tennis-programs/" class="card-link">Drop Class</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src=#
-              class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Class Title</h5>
-            </div>
-            <div class="card-body">
-              <a class="btn btn-primary" href="https://dexteritytennis.com/tennis-programs/" class="card-link">Drop Class</a>
-            </div>
-          </div>
-  
-          <div class="card">
-            <img src="#"
-              class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Class Title</h5>
-            </div>
-            <div class="card-body">
-              <a class="btn btn-primary" href="https://tennislink.usta.com/teamtennis/main/home.aspx"
-                class="card-link">Drop Class</a>
-            </div>
-          </div>
+          {% endfor %}
         </div>
+        {% endfor %}
       </div>
 
 

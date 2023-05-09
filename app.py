@@ -73,16 +73,24 @@ def add():
     elif (request.method == "POST"):
         course_id = request.form["course"]
         new_en = Enrollment(course_id = course_id, student_id = session["username"])
-        print(course_id)
         db_session.add(new_en)
         db_session.commit()
     return render_template("add.html", course_list = get_unenrolled())        
 
-@app.route("/drop")
+@app.route("/drop", methods = ["GET", "POST"])
 def drop():
-    return render_template("drop.html")
-
-    #remove enrollement OR remove course from list
+    if (request.method == "GET"):
+        student = db_session.query(Student).where(Student.username == session["username"]).first()
+        return render_template("drop.html", course_list = student.courses)
+    elif (request.method == "POST"):
+        course_id = request.form["course"]
+        all_en = db_session.query(Enrollment).where(Enrollment.student_id == session["username"]).all()
+        for en in all_en:
+            if(en.course_id == course_id):
+                db_session.delete(en)
+                db_session.commit()
+        student = db_session.query(Student).where(Student.username == session["username"]).first()
+        return render_template("drop.html", course_list = student.courses)
 
 @app.route("/change")
 def change():
