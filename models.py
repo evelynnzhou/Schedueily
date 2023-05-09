@@ -34,6 +34,7 @@ class Course(Base):
     name = Column("name", TEXT, nullable = False)
     block = Column("block", TEXT, nullable = False)
     teacher_id = Column("teacher_id", ForeignKey('teachers.id'))
+    image = Column("image", TEXT, nullable = False)
 
     students = relationship("Student", secondary = "enrollments", back_populates = "courses")
     teacher = relationship("Teacher", back_populates = "courses")

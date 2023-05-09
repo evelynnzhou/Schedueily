@@ -38,12 +38,6 @@
             <li class="nav-item active">
               <a href="/drop" class="nav-link">DROP</a>
             </li>
-            <li class="nav-item">
-              <a href="/change" class="nav-link">CHANGE</a>
-            </li>
-            <li class="nav-item">
-              <a href="view.html" class="nav-link">VIEW</a>
-            </li>
           </ul>
         </div>
       </nav>
@@ -58,12 +52,12 @@
             {% for course in course_list[row*4: row*4 + 4]%}
             <div class="card col-md-3 col-sm-10 col-xs-12">
               <img
-                src=#
+                src={{course.image}}
                 class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">{{course}}</h5>
-              </div>
-              <div class="card-body">
+                <p class="card-text">Taught during {{course.block}} block
+                </p>
                 <form action="/drop" method = "POST">
                   <input type = "hidden" value = "{{course.id}}" name = "course">
                   <button class="btn btn-primary" href="#" class="card-link" type="submit">Drop Class</button>

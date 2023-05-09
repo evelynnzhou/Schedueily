@@ -48,7 +48,7 @@ def signup():
         db_session.commit()
         session["username"] = username
 
-        return render_template("index.html")
+        return redirect(url_for("login"))
 
 @app.route("/home")
 def home() :
