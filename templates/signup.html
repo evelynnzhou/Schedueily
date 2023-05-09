@@ -3,6 +3,7 @@
   <head>
     <title>Schedueily Login/Signup</title>
     <link rel="stylesheet" type="text/css" href="../static/signup.css">
+    <link rel="stylesheet" type="text/css" href="../static/home.css">
     <link href='https://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet'>
   </head>
   <body>
@@ -16,6 +17,13 @@
           <input type="text" placeholder="Email" required id="email" name="email"> 
           <br>
           <button  type="submit" class="signup">Sign up</button>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for msg in messages %}
+                <p class = "error-text">{{msg}}</p>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
         </form>
       </div>
     </div>

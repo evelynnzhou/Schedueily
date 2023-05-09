@@ -16,19 +16,16 @@ def login():
     else:
         username = request.form["username"]
         password = request.form["password"]
-        success = False
 
-        for student in db_session.query(Student).all():
-            if(username == student.username):
-                if(password == student.password):
-                    session["username"] = username
-                    success = True
+        user = Student.query.filter_by(username = username).first()
+        pw = Student.query.filter_by(password = password).first()
         
-        if(success == True):
-            return redirect(url_for("home"))
-        else:
+        if (user is None) or (pw is None):
             flash("Incorrect username or password. Try again.", "error")
             return render_template("index.html")
+        else:
+            session["username"] = username
+            return redirect(url_for("home"))
 
 
 @app.route("/signup", methods = ["GET", "POST"])
@@ -39,7 +36,9 @@ def signup():
         username = request.form["username"]
         password = request.form["password"]
 
-        if username in db_session.query(Student.username).all():
+        user = Student.query.filter_by(username = username).first()
+
+        if (user is not None):
             flash("That username is already taken. Try again.", "error")
             return render_template("signup.html")
         
@@ -101,10 +100,6 @@ def drop():
                 db_session.commit()
         student = db_session.query(Student).where(Student.username == session["username"]).first()
         return render_template("drop.html", course_list = student.courses)
-
-@app.route("/change")
-def change():
-    return render_template("change.html")
 
 if __name__ == "__main__":
     init_db()

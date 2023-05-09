@@ -26,15 +26,15 @@ db_session.add_all([course1, course2, course3, course4, course5, course6, course
 db_session.commit()
 
 # Add new teachers
-teacher1 = Teacher(first_name = "Anne", last_name = "Harris")
-teacher2 = Teacher(first_name = "James", last_name = "Dann")
-teacher3 = Teacher(first_name = "Reeve", last_name = "Garrett")
-teacher4 = Teacher(first_name = "Katharine", last_name = "Hanson")
-teacher5 = Teacher(first_name = "Philip", last_name = "Harris")
-teacher6 = Teacher(first_name = "Nandhini", last_name = "Namasivayam")
+# teacher1 = Teacher(first_name = "Anne", last_name = "Harris")
+# teacher2 = Teacher(first_name = "James", last_name = "Dann")
+# teacher3 = Teacher(first_name = "Reeve", last_name = "Garrett")
+# teacher4 = Teacher(first_name = "Katharine", last_name = "Hanson")
+# teacher5 = Teacher(first_name = "Philip", last_name = "Harris")
+# teacher6 = Teacher(first_name = "Nandhini", last_name = "Namasivayam")
 
-db_session.add_all([teacher1, teacher2, teacher3, teacher4, teacher5, teacher6])
-db_session.commit()
+# db_session.add_all([teacher1, teacher2, teacher3, teacher4, teacher5, teacher6])
+# db_session.commit()
 
 # Add new enrollments
 en1 = Enrollment(course_id = 1, student_id = "a")
