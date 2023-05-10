@@ -17,11 +17,12 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
 
+        #Code Fluency: I used the filter_by function to check if the username/password exist and match in the database rather than looping through every existing user to check
+        #This way my code is more efficient
         user = Student.query.filter_by(username = username).first()
-        pw = Student.query.filter_by(password = password).first()
         
         #checks if username exists and password matches
-        if (user is None) or (pw is None):
+        if (user is None) or (db_session.query(Student).where(Student.username == username).first().password != password):
             flash("Incorrect username or password. Try again.", "error")
             return render_template("index.html")
         else:
@@ -36,7 +37,14 @@ def signup():
     elif (request.method == "POST"):
         username = request.form["username"]
         password = request.form["password"]
+        password2 = request.form["password2"]
 
+        #checks if both entered passwords match
+        if(password != password2):
+            flash("Passwords don't match up. Try again", "error")
+            return render_template("signup.html")
+
+        #Code Fluency: I used the filter_by function to check if the username already exists in the database rather than looping through every existing user to check
         user = Student.query.filter_by(username = username).first()
 
         if (user is not None):
@@ -44,12 +52,12 @@ def signup():
             return render_template("signup.html")
         
         # creates new student and adds it to database
-        student = Student(username = username, password = password)
-        db_session.add(student)
-        db_session.commit()
-        session["username"] = username
-
-        return redirect(url_for("login"))
+        else:
+            student = Student(username = username, password = password)
+            db_session.add(student)
+            db_session.commit()
+            session["username"] = username
+            return redirect(url_for("login"))
 
 @app.route("/home")
 def home() :
