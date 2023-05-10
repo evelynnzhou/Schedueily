@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Schedueily Login/Signup</title>
-    <link rel="stylesheet" type="text/css" href="../static/signup.css">
-    <link rel="stylesheet" type="text/css" href="../static/home.css">
-    <link href='https://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet'>
-  </head>
-  <body>
-    <!-- code below copied from chatgtp -->
-    <div class = "container">
-      <div class="form-container">
-        <form method = "POST">
-          <input type="text" placeholder="Enter username" required id="username" name="username">
-          <br>
-          <input type="password" placeholder="Enter password" required id="password" name="password"> 
-          <br>
-          <input type="password" placeholder="Re-enter Password" required id="password2" name="password2"> 
-          <br>
-          <button  type="submit" class="signup">Sign up</button>
-          <!-- flash message -->
-          {% with messages = get_flashed_messages() %}
-            {% if messages %}
-              {% for msg in messages %}
-                <p class = "error-text">{{msg}}</p>
-              {% endfor %}
-            {% endif %}
-          {% endwith %}
-        </form>
-      </div>
+
+<head>
+  <title>Schedueily Login/Signup</title>
+  <link rel="stylesheet" type="text/css" href="../static/signup.css">
+  <link rel="stylesheet" type="text/css" href="../static/home.css">
+  <link href='https://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet'>
+</head>
+
+<body>
+  <!-- code below copied from chatgtp -->
+  <div class="container">
+    <div class="form-container">
+      <form method="POST">
+        <input type="text" placeholder="Enter username" required id="username" name="username">
+        <br>
+        <input type="password" placeholder="Enter password" required id="password" name="password">
+        <br>
+        <input type="password" placeholder="Re-enter Password" required id="password2" name="password2">
+        <br>
+        <button type="submit" class="signup">Sign up</button>
+        <!-- flash message -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for msg in messages %}
+        <p class="error-text">{{msg}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+      </form>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
