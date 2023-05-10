@@ -7,6 +7,7 @@
     <link href='https://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet'>
   </head>
   <body>
+    <!-- code below copied from chatgtp -->
     <div class = "container">
       <div class="form-container">
         <form method = "POST">
@@ -17,6 +18,7 @@
           <input type="text" placeholder="Email" required id="email" name="email"> 
           <br>
           <button  type="submit" class="signup">Sign up</button>
+          <!-- flash message -->
           {% with messages = get_flashed_messages() %}
             {% if messages %}
               {% for msg in messages %}

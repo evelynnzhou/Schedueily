@@ -16,11 +16,11 @@
     <link href='https://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="../static/navbar.css">
     <link rel="stylesheet" type="text/css" href="../static/home.css">
-    <link rel="stylesheet" type="text/css" href="../static/drop.css">
 
 </head>
 
 <body>
+    <!-- code below copied from chatgtp -->
     <!-- copied from https://getbootstrap.com/docs/4.3/components/navbar/ -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="navbar-left" class="nav-item">
@@ -47,6 +47,7 @@
         <div class="jumbotron text-center">
           <h1>Your Classes</h1>
         </div>
+        <!-- copied from Charlotte: arranges cards to fit 4 per row -->
         {% for row in range((course_list|length/4)|round(method = "ceil")|int)%}
         <div class = "card-deck">
             {% for course in course_list[row*4: row*4 + 4]%}
@@ -58,6 +59,7 @@
                 <h5 class="card-title">{{course}}</h5>
                 <p class="card-text">Taught during {{course.block}} block
                 </p>
+                <!-- button to drop a speicifc class -->
                 <form action="/drop" method = "POST">
                   <input type = "hidden" value = "{{course.id}}" name = "course">
                   <button class="btn btn-primary" href="#" class="card-link" type="submit">Drop Class</button>

@@ -20,6 +20,7 @@ def login():
         user = Student.query.filter_by(username = username).first()
         pw = Student.query.filter_by(password = password).first()
         
+        #checks if username exists and password matches
         if (user is None) or (pw is None):
             flash("Incorrect username or password. Try again.", "error")
             return render_template("index.html")
@@ -42,6 +43,7 @@ def signup():
             flash("That username is already taken. Try again.", "error")
             return render_template("signup.html")
         
+        # creates new student and adds it to database
         student = Student(username = username, password = password)
         db_session.add(student)
         db_session.commit()
@@ -56,6 +58,7 @@ def home() :
     else:
         return redirect(url_for("login"))
 
+# creates a list of courses that the student is not yet enrolled in
 def get_unenrolled():
     student = db_session.query(Student).where(Student.username == session["username"]).first()
     all_courses = db_session.query(Course).all()
@@ -65,6 +68,7 @@ def get_unenrolled():
             course_list.append(course)
     return course_list
 
+# checks if a block is free to add a class
 def check_free(course_id):
     student = db_session.query(Student).where(Student.username == session["username"]).first()
     for course in student.courses:
@@ -81,6 +85,7 @@ def add():
         if(check_free(course_id) == False):
             flash("You already have a class during this block.", "error")
         else:
+            # creates new enrollment if block isn't already filled
             new_en = Enrollment(course_id = course_id, student_id = session["username"])
             db_session.add(new_en)
             db_session.commit()
@@ -94,6 +99,7 @@ def drop():
     elif (request.method == "POST"):
         course_id = request.form["course"]
         all_en = db_session.query(Enrollment).where(Enrollment.student_id == session["username"]).all()
+        # deletes the enrollment whose course id matches w/ the obtained course id 
         for en in all_en:
             if(en.course_id == course_id):
                 db_session.delete(en)

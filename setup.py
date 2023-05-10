@@ -5,13 +5,6 @@ from database import init_db, db_session
 # Initialize our database
 init_db()
 
-# Add new students
-student1 = Student(username = "a", password = "123")
-student2 = Student(username = "b", password = "123")
-
-db_session.add_all([student1, student2])
-db_session.commit()
-
 # Add new courses
 course1 = Course(name = "AP Lit", block = "A", teacher_id = 1, image = "https://media.istockphoto.com/vectors/history-class-set-of-objects-vector-id589421312?k=20&m=589421312&s=612x612&w=0&h=jadxqJSeDUvf9zDfd_z4gAQ6-7Sj8VVciWRiTTW--YU=")
 course2 = Course(name = "AP Physics 2", block = "B", teacher_id = 2, image = "https://media.istockphoto.com/id/855195698/vector/chemical-test-tube-pictogram-icon-laboratory-glassware-or-beaker-equipment-isolated-on-white.jpg?s=612x612&w=0&k=20&c=-GCYlp7-Nbrarm4I9E4HRi22anLS4UTfTO7RBDW152c=")
@@ -25,16 +18,6 @@ course8 = Course(name = "Ethnic Studies", block = "D", teacher_id = 4, image = "
 db_session.add_all([course1, course2, course3, course4, course5, course6, course7, course8])
 db_session.commit()
 
-# Add new teachers
-# teacher1 = Teacher(first_name = "Anne", last_name = "Harris")
-# teacher2 = Teacher(first_name = "James", last_name = "Dann")
-# teacher3 = Teacher(first_name = "Reeve", last_name = "Garrett")
-# teacher4 = Teacher(first_name = "Katharine", last_name = "Hanson")
-# teacher5 = Teacher(first_name = "Philip", last_name = "Harris")
-# teacher6 = Teacher(first_name = "Nandhini", last_name = "Namasivayam")
-
-# db_session.add_all([teacher1, teacher2, teacher3, teacher4, teacher5, teacher6])
-# db_session.commit()
 
 # Add new enrollments
 en1 = Enrollment(course_id = 1, student_id = "a")

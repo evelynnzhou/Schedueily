@@ -33,23 +33,11 @@ class Course(Base):
     id = Column("id", INTEGER, primary_key = True)
     name = Column("name", TEXT, nullable = False)
     block = Column("block", TEXT, nullable = False)
-    # teacher_id = Column("teacher_id", ForeignKey('teachers.id'))
     image = Column("image", TEXT, nullable = False)
 
     students = relationship("Student", secondary = "enrollments", back_populates = "courses")
-    # teacher = relationship("Teacher", back_populates = "courses")
 
     def __repr__(self):
         return self.name
 
-# class Teacher(Base):
-#     __tablename__ = "teachers"
-
-#     id = Column("id", INTEGER, primary_key = True)
-#     first_name = Column("first_name", TEXT, nullable = False)
-#     last_name = Column("last_name", TEXT, nullable = False)
-
-#     courses = relationship("Course", back_populates = "teacher")
-
-# TODO: Complete your models
     
