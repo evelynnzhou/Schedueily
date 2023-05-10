@@ -107,6 +107,12 @@ def drop():
         student = db_session.query(Student).where(Student.username == session["username"]).first()
         return render_template("drop.html", course_list = student.courses)
 
+@app.route("/logout")
+def logout():
+    if "username" in session:
+        session.pop("username")
+    return redirect(url_for("login"))
+
 if __name__ == "__main__":
     init_db()
     app.run(debug=True, port = 5001)

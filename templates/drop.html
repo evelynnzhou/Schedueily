@@ -38,6 +38,9 @@
             <li class="nav-item active">
               <a href="/drop" class="nav-link">DROP</a>
             </li>
+            <li class = "nav-item">
+              <a href="/logout" class="nav-link">LOGOUT</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -47,7 +50,7 @@
         <div class="jumbotron text-center">
           <h1>Your Classes</h1>
         </div>
-        <!-- copied from Charlotte: arranges cards to fit 4 per row -->
+        <!-- copied from Charlotte Yao: arranges cards to fit 4 per row -->
         {% for row in range((course_list|length/4)|round(method = "ceil")|int)%}
         <div class = "card-deck">
             {% for course in course_list[row*4: row*4 + 4]%}
